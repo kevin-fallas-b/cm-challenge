@@ -43,5 +43,10 @@ pipeline {
                 }
             }
         }
+        stage('Run ansible') {
+            steps {
+                ansiblePlaybook(vaultCredentialsId : 'Challenge-proyecto.pem', inventory: 'aws_hosts', playbook: 'ansible/install-nginx.yaml')
+            }
+        }
     }
 }

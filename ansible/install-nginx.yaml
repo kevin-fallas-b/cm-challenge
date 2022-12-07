@@ -1,0 +1,21 @@
+---
+- name: Playbook for installing nginx and starting up the server
+  hosts: main
+  become: true
+  tasks:
+    - name: Update packages (Only if previous update was over than 1 hour ago)
+      apt:
+        update_cache: true
+        cache_valid_time: 3600
+    
+    - name: Install latest version of Nginx
+      apt:
+        name: nginx
+        state: latest
+      notify: restart nginx
+
+  handlers:
+    - name: restart nginx
+      service:
+        name: nginx
+        state: restarted
