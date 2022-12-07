@@ -1,19 +1,14 @@
 pipeline {
     agent any
+    environment {
+        AWS_SHARED_CREDENTIALS_FILE='/home/ubuntu/.aws/credentials'
+    }
     stages {
         stage('Execute terraform init') {
             when { branch "main" }
             steps {
                 dir ('terraform'){
                     bat 'terraform init' 
-                }
-            }
-        }
-         stage('Generate terraform graph') {
-            when { branch "main" }
-            steps {
-                dir ('terraform'){
-                    bat 'terraform graph | dot -Tsvg > graph.svgt'
                 }
             }
         }
