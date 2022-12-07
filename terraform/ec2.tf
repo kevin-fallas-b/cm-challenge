@@ -11,5 +11,5 @@ resource "aws_instance" "ec2" {
 
 
 output "instance_ips" {
-  value = [for i in aws_instance.ec2-pagina-web[*] : i.public_ip]
+  value = [for i in aws_instance.ec2[*] : i.public_ip]
 }
