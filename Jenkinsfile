@@ -30,5 +30,14 @@ pipeline {
                 }
             }
         }
+        stage('Capture Inventory') {
+            steps {
+                sh '''printf \\
+                "\\n$(terraform output -json instance_ips | jq -r \'.[]\')" \\
+                >> aws_hosts'''
+
+                sh 'echo aws_hosts'
+            }
+        }
     }
 }
