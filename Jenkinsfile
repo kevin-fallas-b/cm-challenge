@@ -8,7 +8,7 @@ pipeline {
             when { branch "main" }
             steps {
                 dir ('terraform'){
-                    bat 'terraform init' 
+                    sh 'terraform init' 
                 }
             }
         }
@@ -16,7 +16,7 @@ pipeline {
             when { branch "main" }
             steps {
                 dir ('terraform'){
-                    bat 'terraform plan'
+                    sh 'terraform plan'
                 }
             }
         }
@@ -24,7 +24,7 @@ pipeline {
             when { branch "main" }
             steps {
                 dir ('terraform'){
-                    bat 'terraform apply --auto-approve'
+                    sh 'terraform apply --auto-approve'
                 }
             }
         }
