@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Proyecto Final - Kevin</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+  <body>
+      <form id="regForm" action="">
+
+          <h1>Registro de usuarios</h1>
+          
+          <!-- One "tab" for each step in the form: -->
+          <div class="tab">Nombre:
+            <p><input placeholder="Primer Nombre..." oninput="this.className = ''"></p>
+            <p><input placeholder="Apellido..." oninput="this.className = ''"></p>
+          </div>
+          
+          <div class="tab">Informacion de contacto:
+            <p><input placeholder="Correo..." oninput="this.className = ''"></p>
+            <p><input placeholder="Telefono..." oninput="this.className = ''"></p>
+          </div>
+          
+          <div class="tab">Fecha de Nacimiento:
+            <p><input placeholder="dd" oninput="this.className = ''"></p>
+            <p><input placeholder="mm" oninput="this.className = ''"></p>
+            <p><input placeholder="yyyy" oninput="this.className = ''"></p>
+          </div>
+          
+          <div class="tab">Credenciales:
+            <p><input placeholder="Nombre de usuario..." oninput="this.className = ''"></p>
+            <p><input placeholder="Contraseña..." oninput="this.className = ''"></p>
+          </div>
+          
+          <div style="overflow:auto;">
+            <div style="float:right;">
+              <button type="button" id="prevBtn" onclick="nextPrev(-1)">Atras</button>
+              <button type="button" id="nextBtn" onclick="nextPrev(1)">Siguiente</button>
+            </div>
+          </div>
+          
+          <!-- Circles which indicates the steps of the form: -->
+          <div style="text-align:center;margin-top:40px;">
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+          </div>
+          
+          </form> 
+          <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+
+          <script src='main.js'></script>
+  </body>
+</html>
