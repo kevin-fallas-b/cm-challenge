@@ -38,14 +38,12 @@ pipeline {
                     sh '''printf \\
                     "\\n$(terraform output -json instance_ips | jq -r \'.[]\')" \\
                     >> aws_hosts'''
-
-                    sh 'echo aws_hosts'
                 }
             }
         }
         stage('Run ansible') {
             steps {
-                ansiblePlaybook(vaultCredentialsId : 'Challenge-proyecto.pem', inventory: 'aws_hosts', playbook: 'ansible/install-nginx.yaml')
+                ansiblePlaybook(vaultCredentialsId : 'Challenge-proyecto.pem', inventory: 'terraform/aws_hosts', playbook: 'ansible/install-nginx.yaml')
             }
         }
     }
