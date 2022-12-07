@@ -1,4 +1,4 @@
-resource "aws_instance" "ec2-pagina-web" {
+resource "aws_instance" "ec2" {
   # Block body
   ami           = var.ami-id
   instance_type = var.instance-type
@@ -11,5 +11,5 @@ resource "aws_instance" "ec2-pagina-web" {
 
 
 output "instance_ips" {
-  value = [for i in aws_instance.ec2[*] : i.public_ip]
+  value = [for i in aws_instance.ec2-pagina-web[*] : i.public_ip]
 }
