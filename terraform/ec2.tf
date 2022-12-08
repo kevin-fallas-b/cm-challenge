@@ -2,7 +2,9 @@ resource "aws_instance" "nginx" {
   # Block body
   ami           = var.ami-id
   instance_type = var.instance-type
+  
   key_name      = var.key_pair_name
+  security_groups = [aws_security_group.nginx.name]
   
   tags = {
     "Name" = "ec2-pagina-web"
@@ -15,7 +17,7 @@ resource "aws_instance" "nginx" {
     connection {
       type     = "ssh"
       user     = local.remote_user
-      password = local.ssh_private_key
+      private_key = file(local.ssh_private_key)
       host     = self.public_ip
    }
 
