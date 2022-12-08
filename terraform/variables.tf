@@ -16,7 +16,7 @@ variable "key_pair_name" {
     default       = "challenge-proyecto"
 }
 
-variable "sg-name" {
+variable "sg_name" {
     type          = string
     description   = "Name for security group"
     default       = "nginx security group"
