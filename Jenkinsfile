@@ -30,6 +30,7 @@ pipeline {
                 }
             }
         }
+        /*
         stage('Capture Inventory') {
             steps {
                 dir ('terraform'){
@@ -45,6 +46,6 @@ pipeline {
             steps {
                 ansiblePlaybook(vaultCredentialsId : 'Challenge-proyecto.pem', inventory: 'terraform/aws_hosts', playbook: 'ansible/install-nginx.yaml')
             }
-        }
+        }*/
     }
 }
