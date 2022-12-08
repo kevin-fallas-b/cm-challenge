@@ -6,10 +6,7 @@ resource "aws_instance" "nginx" {
   key_name      = var.key_pair_name
   security_groups = [aws_security_group.nginx.name]
   
-  tags = {
-    "Name" = "ec2-pagina-web"
-  }
-
+ 
   provisioner "remote-exec" {
     inline = [
       "echo 'wait untill ssh is ready'"
@@ -26,6 +23,10 @@ resource "aws_instance" "nginx" {
   #Call ansible
   provisioner "local-exec" {
     command = "ansible-playbook -i ${self.public_ip} --private-key ${local.ssh_private_key}  ../ansible/install-nginx.yaml"
+  }
+
+  tags = {
+    "Name" = "ec2-pagina-web"
   }
 
 }

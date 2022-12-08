@@ -1,6 +1,6 @@
 ---
 - name: Playbook for installing nginx and starting up the server
-  hosts: main
+  hosts: all
   become: true
   tasks:
     - name: Update packages (Only if previous update was over than 1 hour ago)
