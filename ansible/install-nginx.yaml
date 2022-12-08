@@ -2,6 +2,7 @@
 - name: Playbook for installing nginx and starting up the server
   hosts: all
   become: true
+  remote_user: ubuntu
   tasks:
     - name: Update packages (Only if previous update was over than 1 hour ago)
       apt:
