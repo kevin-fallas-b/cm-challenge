@@ -15,3 +15,9 @@ variable "key_pair_name" {
     description   = "Key pair created in aws.com"
     default       = "challenge-proyecto"
 }
+
+variable "sg-name" {
+    type          = string
+    description   = "Name for security group"
+    default       = "nginx security group"
+}
