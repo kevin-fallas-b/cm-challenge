@@ -22,6 +22,16 @@ pipeline {
                 }
             }
         }
+
+        // This stage has to be executed to that ansible recognizes our config file when the terraform apply command 
+        // Calls the ansible playbook. This is also so that we can keep the ansible config file isolated in its directory.
+        stage('Copy Ansible config files'){
+            when { branch "main" }
+            steps{
+                sh 'sudo mv cp ./ansible/ansible.cfg ./terraform'
+            }
+        }
+
         stage('Execute terraform apply') {
             when { branch "main" }
             steps {
@@ -30,22 +40,5 @@ pipeline {
                 }
             }
         }
-        /*
-        stage('Capture Inventory') {
-            steps {
-                dir ('terraform'){
-                    sh 'terraform output'
-
-                    sh '''printf \\
-                    "(terraform output -json instance_ips | jq -r \'.[]\')" \\
-                    >> aws_hosts'''
-                }
-            }
-        }
-        stage('Run ansible') {
-            steps {
-                ansiblePlaybook(vaultCredentialsId : 'Challenge-proyecto.pem', inventory: 'terraform/aws_hosts', playbook: 'ansible/install-nginx.yaml')
-            }
-        }*/
     }
 }
