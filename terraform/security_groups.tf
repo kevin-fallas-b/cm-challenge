@@ -2,21 +2,21 @@ resource "aws_security_group" "nginx" {
     name = var.sg_name
     vpc_id = local.vpc_id
 
-    ingress = {
+    ingress  {
         from_port = 22
         to_port = 22
         protocol = "tcp"
         cidr_blocks = ["0.0.0.0/0"]
     }
     
-    ingress = {
+    ingress  {
         from_port = 80
         to_port = 80
         protocol = "tcp"
         cidr_blocks = ["0.0.0.0/0"]
     }
 
-    egress = {
+    egress  {
       from_port = 0
       to_port = 0
       protocol = "-1"
