@@ -9,6 +9,9 @@ resource "aws_instance" "nginx" {
   }
 
   provisioner "remote-exec" {
+    inline = [
+      "echo 'wait untill ssh is ready'"
+    ]
     connection {
       type     = "ssh"
       user     = local.remote_user
