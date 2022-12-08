@@ -22,7 +22,7 @@ resource "aws_instance" "nginx" {
 
   #Call ansible
   provisioner "local-exec" {
-    command = "ansible-playbook -i ${self.public_ip} --private-key ${local.ssh_private_key}  ../ansible/install-nginx.yaml"
+    command = "ansible-playbook -i ${self.public_ip}, --private-key ${local.ssh_private_key}  ../ansible/install-nginx.yaml"
   }
 
   tags = {
