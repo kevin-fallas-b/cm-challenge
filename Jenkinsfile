@@ -28,7 +28,7 @@ pipeline {
         stage('Copy Ansible config files'){
             when { branch "main" }
             steps{
-                sh 'sudo mv cp ./ansible/ansible.cfg ./terraform'
+                sh 'sudo mv ./ansible/ansible.cfg ./terraform'
             }
         }
 
