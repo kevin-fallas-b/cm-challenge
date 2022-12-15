@@ -6,6 +6,14 @@ pipeline {
         AWS_REGION=credentials('AWS_REGION')
     }
     stages {
+        stage('Destroy existing EC2 Instance') {
+            when { branch "main" }
+            steps {
+                dir ('terraform'){
+                    sh 'terraform destroy --target aws_instance.nginx --auto-approve'
+                }
+            }
+        }
         stage('Execute terraform init') {
             when { branch "main" }
             steps {
@@ -14,7 +22,7 @@ pipeline {
                 }
             }
         }
-         stage('Execute terraform plan') {
+        stage('Execute terraform plan') {
             when { branch "main" }
             steps {
                 dir ('terraform'){
